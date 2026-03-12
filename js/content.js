@@ -4,7 +4,7 @@ import { round, score } from './score.js';
  * Path to directory containing `_list.json` and all levels
  * Changed to relative path for GitHub Pages compatibility
  */
-const dir = './data'; 
+const dir = '/wertzium-demonlist/data';
 
 export async function fetchList() {
     const listResult = await fetch(`${dir}/_list.json`);
