@@ -2,8 +2,9 @@ import { round, score } from './score.js';
 
 /**
  * Path to directory containing `_list.json` and all levels
+ * Changed to relative path for GitHub Pages compatibility
  */
-const dir = 'data';
+const dir = 'data'; 
 
 export async function fetchList() {
     const listResult = await fetch(`${dir}/_list.json`);
@@ -48,6 +49,7 @@ export async function fetchEditors() {
 
 export async function fetchLeaderboard() {
     const list = await fetchList();
+    if (!list) return [[], []];
 
     const scoreMap = {};
     const errs = [];
@@ -105,7 +107,6 @@ export async function fetchLeaderboard() {
         });
     });
 
-    // Wrap in extra Object containing the user and total score
     const res = Object.entries(scoreMap).map(([user, scores]) => {
         const { verified, completed, progressed } = scores;
         const total = [verified, completed, progressed]
@@ -119,6 +120,5 @@ export async function fetchLeaderboard() {
         };
     });
 
-    // Sort by total score
     return [res.sort((a, b) => b.total - a.total), errs];
 }
