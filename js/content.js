@@ -1,10 +1,10 @@
 import { round, score } from './score.js';
 
 /**
- * Path to directory containing `_list.json` and all levels
- * Changed to relative path for GitHub Pages compatibility
+ * Path to directory containing `_list.json` and all levels.
+ * We use 'data' (no leading slash) so it stays inside your subfolder /wertzium-demonlist/
  */
-const dir = '/wertzium-demonlist/data';
+const dir = 'data';
 
 export async function fetchList() {
     const listResult = await fetch(`${dir}/_list.json`);
@@ -121,4 +121,15 @@ export async function fetchLeaderboard() {
     });
 
     return [res.sort((a, b) => b.total - a.total), errs];
+}
+
+// Added this to fix specific page-level fetching if needed
+export async function fetchRecords(levelName) {
+    try {
+        const res = await fetch(`${dir}/${levelName}.json`);
+        const data = await res.json();
+        return data.records || [];
+    } catch {
+        return [];
+    }
 }
