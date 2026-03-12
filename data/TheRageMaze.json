@@ -1,0 +1,18 @@
+{
+    "id": 146,
+    "name": "The Rage Maze",
+    "author": "Vexi",
+    "creators": ["Vexi"],
+    "verifier": "Null",
+    "verification": "https://www.youtube.com",
+    "percentToQualify": 60,
+    "password": "Free copy",
+    "records": [
+        {
+            "user": "Null",
+            "link": "https://www.youtube.com",
+            "percent": 0,
+            "hz": 67
+        }
+    ]
+}
