@@ -13,11 +13,10 @@ const app = Vue.createApp({
 });
 
 const router = VueRouter.createRouter({
-    // Adding the base path inside createWebHashHistory is the fix
-    history: VueRouter.createWebHashHistory('/wertzium-demonlist/'),
+    // Standard hash history is most compatible with GitHub Pages subfolders
+    history: VueRouter.createWebHashHistory(),
     routes,
 });
 
 app.use(router);
-
 app.mount('#app');
