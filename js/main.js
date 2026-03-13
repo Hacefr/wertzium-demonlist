@@ -13,9 +13,11 @@ const app = Vue.createApp({
 });
 
 const router = VueRouter.createRouter({
-    history: VueRouter.createWebHashHistory(),
+    // Adding the base path inside createWebHashHistory is the fix
+    history: VueRouter.createWebHashHistory('/wertzium-demonlist/'),
     routes,
 });
 
 app.use(router);
+
 app.mount('#app');
